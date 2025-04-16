@@ -1,21 +1,22 @@
 from enum import Enum
 
 class TextType(Enum):
-    NORMAL = "normal"
+    TEXT = "text"
     BOLD = "bold"
     ITALIC = "italic"
     CODE = "code"
     LINK = "link"
     IMAGE = "image"
 
-class TextNode():
-    def __init__(self, text, text_type, url=None):
-        self.text = text
-        self.text_type = text_type
-        self.url = url
+class TextNode:
+    def __init__(self, type, value="", **kwargs):
+        self.value = value
+        self.type = type
+        # Store additional properties, like src, alt, or href
+        self.props = kwargs
 
     def __eq__(self, other):
-        return self.text == other.text and self.text_type == other.text_type and self.url == other.url
+        return self.value == other.value and self.type == other.type and self.props == other.props
     
     def __repr__(self):
-        return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
+        return f"TextNode({self.value}, {self.type.value}, {self.props})"
