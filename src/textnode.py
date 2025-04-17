@@ -9,7 +9,7 @@ class TextType(Enum):
     IMAGE = "image"
 
 class TextNode:
-    def __init__(self, type, value="", **kwargs):
+    def __init__(self, value="", type=None, **kwargs):
         self.value = value
         self.type = type
         # Store additional properties, like src, alt, or href
